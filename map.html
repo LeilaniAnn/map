@@ -13,13 +13,14 @@
 </head>
 
 <body>
+<!-- this is where map displays -->
     <div id="map"></div>
+    <!-- sidebar to filter results  -->
     <div id="sidebar-wrapper">
-        <div class="container">
             <h3>Filter results </h3>
-            <input type="text">&nbsp;&nbsp;<i class="fa fa-search 2x" aria-hidden="true"></i>
+            <input placeholder = "search for meetup group" type="input" data-bind="searchInput: query, ">&nbsp;&nbsp;<i class="fa fa-search 2x" aria-hidden="true"></i>
+            <!-- results of the search -->
             <div id="results"></div>
-        </div>
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXMMdj-9KB61-pWSQOZGiDPwE7AUb8myA&callback=ViewModel"></script>
