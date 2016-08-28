@@ -2,86 +2,30 @@
 <html>
 
 <head>
-    <title>Simple Map</title>
+    <title>I'm the Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
 
-    <style>
-      .info-window{
-        width:250px;
-        height: 250px;
-        font-size: 12px;
-      }
-      .info-window p{
-        text-align:justify;
-        width: 240px;
-      }
-      #results {
-        float
-      }
-    </style>
-    <style>
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    
-    #map {
-        height: 100%;
-        width: 65%;
-        float:right;
-    }
-    </style>
 </head>
 
 <body>
     <div id="map"></div>
-     <div id="sidebar-wrapper">
-     <div class="container">
-     <h3>Filter results </h3>
-      <input type = "text">&nbsp;&nbsp;<i class="fa fa-search 2x" aria-hidden="true"></i>
-      <div id="results"></div>
+    <div id="sidebar-wrapper">
+        <div class="container">
+            <h3>Filter results </h3>
+            <input type="text">&nbsp;&nbsp;<i class="fa fa-search 2x" aria-hidden="true"></i>
+            <div id="results"></div>
         </div>
-        </div>
-    <script>
-    var map;
+    </div>
 
-    function initMap() {
-          var $filterResults = $('#results');
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {
-                lat: 37.7205,
-                lng: -122.443
-            },
-            zoom: 12
-        });
-        var meetup = $.getJSON("http://api.meetup.com/groups.json/?zip=94112&radius=12&topic=technology&order=members&key=e4ea6e144b705138235d42a296244&callback=?");
-        var messageMeetup = meetup.then(function(data) {
-            $.each(data.results, function(i, item) {
-                var infowindow = new google.maps.InfoWindow({
-                    content: '<div class="panel panel-primary"><h5 class="text-center"><a href="' + item.link + '" target="_blank">' + item.name + '</a></h5></div>' + '<div class="panel-body"><p class="text-center"><img src="' + item.photo_url + '" width="150">' + '<br>'+ '<strong>Last active:</strong> ' + item.updated + ' (' + item.members + ' members) ' + '<br>' + item.description + '</p></div>'});
-            $filterResults.append('<ul class="list-unstyled"><li>' + item.name +'<br></li></ul>');
-
-                marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(item.lat, item.lon),
-                    map: map,
-                  });
-                marker.addListener('click', function() {
-                    infowindow.open(map, marker)
-                        });
-                    })
-                        });
-
-        };
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXMMdj-9KB61-pWSQOZGiDPwE7AUb8myA&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXMMdj-9KB61-pWSQOZGiDPwE7AUb8myA&callback=ViewModel"></script>
     <script src="js/lib/knockout-3.2.0.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/lib/app.js"></script>
+
 </body>
 
 </html>
