@@ -1,3 +1,4 @@
+<!-- obsolete file, index.html now being used -->
 <!DOCTYPE html>
 <html>
 
@@ -18,13 +19,17 @@
     <!-- sidebar to filter results  -->
     <div id="sidebar-wrapper">
             <h3>Filter results </h3>
-            <input placeholder = "search for meetup group" type="input" data-bind="searchInput: query, ">&nbsp;&nbsp;<i class="fa fa-search 2x" aria-hidden="true"></i>
+                        <input list="autoComplete" id="search" type="search" placeholder="Search Location" size="35" autocomplete="on" data-bind="textInput: query, valueUpdate: 'keyup'" />
+                      <i class="fa fa-search 2x" aria-hidden="true"></i>
             <!-- results of the search -->
             <div id="results"></div>
     </div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXMMdj-9KB61-pWSQOZGiDPwE7AUb8myA&callback=ViewModel"></script>
+
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSCtZpkBsbNMncEsqtkBAAHWEtX8HWr8Q&callback=initMap" onerror="mapError()"></script>
     <script src="js/lib/knockout-3.2.0.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
     <script src="js/lib/app.js"></script>
 
 </body>
