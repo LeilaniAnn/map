@@ -1,0 +1,105 @@
+@import url('http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css');
+html{
+
+}
+body {
+    padding-top: 50px;
+    overflow: hidden;
+
+}
+#wrapper {
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    display: inline-block;
+
+}
+#main-wrapper {
+    height: 100%;
+    overflow-y: auto;
+    padding: 50px 0 0px 0;
+
+}
+#header{
+	top:0;
+	height:50px;
+    font-family: 'Open Sans', sans-serif;
+    text-align:center;
+
+}
+#main {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    padding: 0 15px;
+    font-family: 'Open Sans', sans-serif;
+
+}
+#sidebar-wrapper {
+    height: 100%;
+    padding: 50px 0 0px 0;
+    position: fixed;
+    border-right: 1px solid gray;
+    z-index: 99;
+    background:rgb(255,255,255);
+    background:rgba(255,255,255,.85);
+    font-family: 'Open Sans', sans-serif;
+
+}
+#sidebar {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+}
+#sidebar .list-group-item {
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+background: transparent;
+}
+.panel-body{
+	top:-10px;
+}
+  
+@media (max-width: 992px) {
+    body {
+        margin-top: 70px;
+    }
+}
+@media (min-width: 992px) {
+    #main-wrapper {
+        float:right;
+    }
+}
+@media (max-width: 992px) {
+    #main-wrapper {
+        padding-top: 50px;
+  /* to allow for map height */
+  height: 100%;
+  width: 100%;
+    }
+}
+@media (max-width: 992px) {
+    #sidebar-wrapper {
+        position: static;
+        height:auto;
+        max-height: 300px;
+        border-right:0;
+        overflow:scroll;
+        display: none !important;
+    }
+}
+
+#map{
+  height: 100%;
+  width: 100%;
+}
+#infoWindow{
+    font-family: 'Open Sans', sans-serif;
+}
+
+}
