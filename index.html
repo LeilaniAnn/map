@@ -9,32 +9,33 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 
 <body>
-<div class="container">
     <div id="header" class="navbar navbar-default navbar-fixed-top">
+<div class="container">
         <ul class="list-inline list-unstyled">
-            <li class="pull-right"><a href="http://foursquare.com"><img src="images/logo.png" height="50px"></a></li>
-        <li class="pull-left input-group input-group-lg">
-                <!-- keyup : updates your view model when the user releases a key -->
-            <input placeholder="filter search results" class="filter form-control" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
-        </li>
         <li class="text-center"><h3> What's <span style="color:#FC4575;"><i class="fa fa-foursquare" aria-hidden="true"></i></span> Trending ?</h3></li>
         <!-- append error results -->
    <h2> <li id="error-results" class="bg-danger"></li></h2>
-
         </ul>
+
+    </div>
     </div>
     <!-- https://startbootstrap.com/template-overviews/simple-sidebar/ -->
-    <div id="wrapper" class="">
+    <div id="wrapper">
         <div id="sidebar-wrapper" class="">
-            <div id="sidebar" class="">
+            <div id="sidebar" >
+             <p class="pull-left input-group input-group-lg">
+                <!-- keyup : updates your view model when the user releases a key -->
+            <input placeholder="filter search results" class="filter form-control" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
+            </p>
                 <ul class="nav list-group" data-bind="foreach: filterPins">
                     <li class="list-group-item" data-bind="text: name, event: {click: filteredMarker, mouseover: drop}" onmouseover="this.style.background='#FC4575';" onmouseout="this.style.background='transparent';"></li>
                     </li>
                 </ul>
-            </div>
+                </div>
         </div>
         <div id="main-wrapper" class="col-md-12">
             <div id="main" class="">
@@ -44,6 +45,7 @@
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="js/lib/knockout-3.2.0.js"></script>
 <script src="js/lib/app.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSCtZpkBsbNMncEsqtkBAAHWEtX8HWr8Q&callback=initMap" async defer ></script>

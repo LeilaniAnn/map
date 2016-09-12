@@ -83,17 +83,29 @@ background: transparent;
   width: 100%;
     }
 }
-@media (max-width: 992px) {
+/*@media (max-width: 992px) {
     #sidebar-wrapper {
-        position: static;
         height:auto;
         max-height: 300px;
         border-right:0;
         overflow:scroll;
         display: none !important;
     }
-}
+}*/
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+    #sidebar {
+        margin-top:-55px;
+        margin-left:-20px;
 
+
+-webkit-transform:scale(0.7);
+-moz-transform:scale(0.7);
+-ms-transform:scale(0.7);
+transform:scale(0.7);
+}
+}
 #map{
   height: 100%;
   width: 100%;
