@@ -21,8 +21,7 @@ var clientSecret = 'LR1QBONLMKUUPWF4XELUFQCBDUMO3OF1KN1RLS2VFTSJDIG5';
 var v = '20160831';
 
 var foursquareUrl = "https://api.foursquare.com/v2/venues/explore/?near=94112&venuePhotos=1&section=trending&client_id=" + clientID + "&client_secret=" + clientSecret + "&v=" + v;
-var trending = function(data) {
-    var self = this;
+var Trending = function(data) {
     var lat = data.venue.location.lat;
     var lng = data.venue.location.lng;
     this.position = new google.maps.LatLng(lat, lng);
@@ -52,7 +51,7 @@ var trending = function(data) {
     });
 };
 
-trending.prototype.drop = function() {
+Trending.prototype.drop = function() {
     var obj;
     if (this.hasOwnProperty('marker')) {
         obj = this.marker;
@@ -63,13 +62,13 @@ trending.prototype.drop = function() {
 
 };
 
-trending.prototype.infoWindow = function() {
+Trending.prototype.infoWindow = function() {
     var contentString = '<div id="infoWindow"><h4 class="text-center"><a target="_blank" href="http://foursquare.com/v/' + this.id() + '">' + this.name() + '</a></h4><h5 class="text-center">Category: ' + this.category() + '</h5><p><img class="center-block img-responsive" src="' + this.imageUrl() + '"><center><h4>Get Directions:<br> <a target="_blank" href="https://www.google.com/maps/place/' + this.fullAddress() + '">' + this.address() + '<br>' + this.city() + '<br>' + this.postalCode() + '</a></h4>' + '</center></p></div>';
     infoWindow.setContent(contentString);
     infoWindow.open(map, this.marker);
 };
 
-trending.prototype.filteredMarker = function() {
+Trending.prototype.filteredMarker = function() {
     this.drop();
     this.infoWindow();
 };
@@ -85,7 +84,7 @@ var ViewModel = function() {
         self.items(data.response.groups[0].items);
         //Creating markers to pop up the map
         for (var i = 0; i < self.items().length; i++) {
-            var venue = new trending(self.items()[i]);
+            var venue = new Trending(self.items()[i]);
             self.venues.push(venue);
 
         }

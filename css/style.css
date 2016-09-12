@@ -94,7 +94,7 @@ background: transparent;
 }*/
 @media only screen 
 and (min-device-width : 320px) 
-and (max-device-width : 480px) {
+and (max-device-width : 980px) {
     #sidebar {
         margin-top:-55px;
         margin-left:-20px;
