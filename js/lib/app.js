@@ -34,6 +34,12 @@ var Trending = function(data) {
         return this.address() + this.city() + this.postalCode();
     }, this);
     this.id = ko.observable(data.venue.id);
+    // oh my lord this part took forever. GROUPS/ITEMS are objects within the object because inception
+    this.imageSuffix = ko.observable(data.venue.photos.groups[0].items[0].suffix);
+    this.imagePrefix = ko.observable(data.venue.photos.groups[0].items[0].prefix);
+    this.imageUrl = ko.computed(function() {
+        return this.imagePrefix() + '150x150' + this.imageSuffix();
+    }, this);
 
     // var imageUrl = 'https://api.foursquare.com/v2/venues/'+ this.id() +'?oauth_token=IS3P123M340BTTR2AICSWOTQPTUKNDNHD0EN3F4QCMXI4JPG&v=20160809';
     this.marker = new google.maps.Marker({
@@ -57,7 +63,7 @@ Trending.prototype.drop = function() {
 };
 
 Trending.prototype.infoWindow = function() {
-    var contentString = '<div id="infoWindow"><h4 class="text-center"><a target="_blank" href="http://foursquare.com/v/' + this.id() + '">' + this.name() + '</a></h4><h5 class="text-center">Category: ' + this.category() + '</h5><p><center><h4>Get Directions:<br> <a target="_blank" href="https://www.google.com/maps/place/' + this.fullAddress() + '">' + this.address() + '<br>' + this.city() + '<br>' + this.postalCode() + '</a></h4>' + '</center></p></div>';
+    var contentString = '<div id="infoWindow"><h4 class="text-center"><a target="_blank" href="http://foursquare.com/v/' + this.id() + '">' + this.name() + '</a></h4><h5 class="text-center">Category: ' + this.category() + '</h5><p><img class="center-block img-responsive" src="' + this.imageUrl() + '"><center><h4>Get Directions:<br> <a target="_blank" href="https://www.google.com/maps/place/' + this.fullAddress() + '">' + this.address() + '<br>' + this.city() + '<br>' + this.postalCode() + '</a></h4>' + '</center></p></div>';
     infoWindow.setContent(contentString);
     infoWindow.open(map, this.marker);
 };
